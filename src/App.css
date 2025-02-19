@@ -315,3 +315,72 @@ input[type="file"] {
   margin-top: 10px;
   font-weight: bold;
 }
+
+/* Specific styles for the Generate Manual Test Cases section */
+.generate-manual-testcases {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.generate-manual-testcases h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.generate-manual-testcases .form-group {
+  margin-bottom: 15px;
+}
+
+.generate-manual-testcases label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.generate-manual-testcases input[type="text"],
+.generate-manual-testcases textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.generate-manual-testcases textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.generate-manual-testcases .checkbox-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.generate-manual-testcases .checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: normal;
+}
+
+.generate-manual-testcases .generate-button {
+  padding: 10px 20px;
+  background-color: #61fbb8;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #000000;
+  margin-top: 10px;
+}
+
+.generate-manual-testcases .generate-button:hover {
+  background-color: #4fa3c7;
+}

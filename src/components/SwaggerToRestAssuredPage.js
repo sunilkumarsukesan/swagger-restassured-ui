@@ -7,7 +7,7 @@ import PushCodeModal from './PushCodeModal';
 
 function GenerateCodePage() {
   const [swaggerFile, setSwaggerFile] = useState(null);
-  const [swaggerUrl, setSwaggerUrl] = useState('');
+  const [swaggerUrl] = useState('');
   const [apiDetails, setApiDetails] = useState('');
   const [javaCode, setJavaCode] = useState('');
   const [testResults, setTestResults] = useState('');

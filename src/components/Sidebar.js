@@ -25,6 +25,11 @@ function Sidebar() {
               </Link>
             </li>
             <li className="sidebar-item">
+              <Link to="/generate-manual-testcases" className="sidebar-link">
+              Generate Manual Test Cases
+              </Link>
+            </li>
+            <li className="sidebar-item">
               <Link to="/config" className="sidebar-link">
                 Configuration
               </Link>
