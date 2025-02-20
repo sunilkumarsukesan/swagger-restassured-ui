@@ -1,0 +1,31 @@
+Boundary Testing:
+	1. Field Length Limits
+		○ Verify if fields have maximum character limits (e.g., Name: 50 characters, Email: 100 characters).
+		○ Test entering 1 character and maximum allowed characters.
+		○ Try exceeding the character limits to see how the system reacts.
+	2. Email Validation
+		○ Test various email formats: 
+			§ Valid: user@example.com, test.user@domain.co.in
+			§ Invalid: user@.com, @domain.com, user@domain, user@@domain.com
+	3. Password Complexity
+		○ Verify if passwords meet security criteria (e.g., uppercase, lowercase, number, special character).
+		○ Try weak passwords like 12345, password, and check validation messages.
+Role-Based Testing:
+	1. Different User Roles 
+		○ Register as Admin, Guest, Member, or Moderator (if applicable).
+		○ Ensure each role gets the correct permissions and UI elements during registration.
+Cross-Browser & Device Testing:
+	1. Browser Compatibility
+		○ Test on Chrome, Firefox, Edge, Safari to ensure consistency.
+	2. Mobile Responsiveness
+		○ Verify registration flow on mobile devices & tablets in portrait and landscape modes.
+Error Handling & Alerts:
+	1. Form Submission Without Filling Fields
+		○ Ensure required field validation works correctly and shows proper messages.
+	2. Error Message Consistency
+		○ Confirm error messages are clear, specific, and user-friendly (e.g., "Email is invalid" instead of "Error 400").
+Performance & Load Testing:
+	1. Simultaneous Registrations
+		○ Test multiple users registering at the same time to check system performance.
+	2. Page Load Speed
+	• Verify how fast the registration form loads under normal and high traffic.

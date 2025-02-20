@@ -397,3 +397,15 @@ input[type="file"] {
   border: 2px solid red;
   background-color: #ffe6e6;
 }
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.info-icon {
+  color: #007bff;
+  font-size: 1rem;
+  margin-left: 5px;
+}

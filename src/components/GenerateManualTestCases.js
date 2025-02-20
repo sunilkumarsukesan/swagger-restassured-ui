@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; // Import toastify styles
+import "react-toastify/dist/ReactToastify.css";
+import { FaInfoCircle } from "react-icons/fa"; 
+import "../tooltip.css"; // Ensure you have a CSS file for tooltip styling
 
 const GenerateManualTestCases = () => {
   const [testType, setTestType] = useState({
@@ -12,10 +14,10 @@ const GenerateManualTestCases = () => {
   const [userStory, setUserStory] = useState("");
   const [acceptanceCriteria, setAcceptanceCriteria] = useState("");
   const [epicStory, setEpicStory] = useState("");
+  const [additionalInstructions, setAdditionalInstructions] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [errors, setErrors] = useState({});
-
   const errorRef = useRef(null);
 
   const handleTestTypeChange = (type) => {
@@ -32,13 +34,11 @@ const GenerateManualTestCases = () => {
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       setErrorMessage("Please fill in the required fields.");
-
       setTimeout(() => {
         if (errorRef.current) {
           errorRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       }, 100);
-
       return false;
     }
 
@@ -62,6 +62,7 @@ const GenerateManualTestCases = () => {
           applicationUrl,
           acceptanceCriteria,
           epicDescription: epicStory,
+          additionalInstructions,
         }),
       });
 
@@ -90,6 +91,7 @@ const GenerateManualTestCases = () => {
       setUserStory("");
       setAcceptanceCriteria("");
       setEpicStory("");
+      setAdditionalInstructions("");
 
       setErrorMessage(""); // Clear any existing errors
 
@@ -111,12 +113,7 @@ const GenerateManualTestCases = () => {
     <div className="section generate-manual-testcases">
       <h2>Generate Manual Test Cases</h2>
 
-      {/* Display Error Message in Red */}
-      {errorMessage && (
-        <div ref={errorRef} className="error-message">
-          {errorMessage}
-        </div>
-      )}
+      {errorMessage && <div ref={errorRef} className="error-message">{errorMessage}</div>}
 
       <div className={`form-group ${errors.applicationUrl ? "error" : ""}`}>
         <label>Application URL:</label>
@@ -156,30 +153,45 @@ const GenerateManualTestCases = () => {
       </div>
 
       <div className="form-group">
+        <label>
+          Additional Instructions (Optional):{" "}
+          <span className="tooltip-container">
+            <FaInfoCircle className="info-icon" />
+            <span className="tooltip-text">
+              Example:  
+              <ul>
+      <li>Perform <b>boundary testing</b> by using minimum, maximum, and out-of-range values.</li>
+      <li>Use <b>role-based testing</b> to validate different user roles (Admin, Guest, User).</li>
+      <li>Conduct <b>exploratory testing</b> to find unexpected edge cases.</li>
+      <li>Simulate <b>real-world scenarios</b> (e.g., low network speed, high traffic load).</li>
+      <li>Test with <b>different user inputs</b>, including invalid, empty, and special characters.</li>
+    </ul>
+    <a href="/Additional_Instructions_sample.txt" download="Additional_Instructions.txt" className="download-button">
+                📄 Download Sample Additional Instructions
+              </a>
+            </span>
+          </span>
+        </label>
+        <textarea
+          value={additionalInstructions}
+          onChange={(e) => setAdditionalInstructions(e.target.value)}
+          placeholder="Enter additional test instructions (optional)"
+        />
+      </div>
+
+      <div className="form-group">
         <label>Test Type:</label>
         <div className="checkbox-group">
           <label>
-            <input
-              type="checkbox"
-              checked={testType.positive}
-              onChange={() => handleTestTypeChange("positive")}
-            />
+            <input type="checkbox" checked={testType.positive} onChange={() => handleTestTypeChange("positive")} />
             Positive
           </label>
           <label>
-            <input
-              type="checkbox"
-              checked={testType.negative}
-              onChange={() => handleTestTypeChange("negative")}
-            />
+            <input type="checkbox" checked={testType.negative} onChange={() => handleTestTypeChange("negative")} />
             Negative
           </label>
           <label>
-            <input
-              type="checkbox"
-              checked={testType.edge}
-              onChange={() => handleTestTypeChange("edge")}
-            />
+            <input type="checkbox" checked={testType.edge} onChange={() => handleTestTypeChange("edge")} />
             Edge
           </label>
         </div>
@@ -191,7 +203,6 @@ const GenerateManualTestCases = () => {
 
       {loading && <div className="spinner">Loading...</div>}
 
-      {/* Toaster Container */}
       <ToastContainer position="top-center" autoClose={3000} hideProgressBar />
     </div>
   );
